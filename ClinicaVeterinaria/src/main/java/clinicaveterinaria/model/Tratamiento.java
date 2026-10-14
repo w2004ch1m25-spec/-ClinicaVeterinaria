@@ -2,7 +2,6 @@ package clinicaveterinaria.model;
 
 import java.util.Objects;
 
-
 public class Tratamiento {
     private int id;
     private TipoTratamiento tipo;
@@ -14,32 +13,6 @@ public class Tratamiento {
         this.tipo = tipo;
         this.descripcion = descripcion;
         this.costo = costo;
-    }
-
-    public double calcularCostoFinal() {
-        if (tipo == TipoTratamiento.VACUNA) {
-            return costo + 5.0;
-        } else if (tipo == TipoTratamiento.CIRUGIA) {
-            return costo * 1.25 + 80.0;
-        } else if (tipo == TipoTratamiento.MEDICAMENTO) {
-            return costo * 1.10;
-        } else if (tipo == TipoTratamiento.FISIOTERAPIA) {
-            return costo * 0.95;
-        }
-        return costo;
-    }
-
-    public String obtenerIndicaciones() {
-        if (tipo == TipoTratamiento.VACUNA) {
-            return "Observar fiebre durante 24 horas.";
-        } else if (tipo == TipoTratamiento.CIRUGIA) {
-            return "Ayuno previo y control postoperatorio.";
-        } else if (tipo == TipoTratamiento.MEDICAMENTO) {
-            return "Administrar segun receta.";
-        } else if (tipo == TipoTratamiento.FISIOTERAPIA) {
-            return "Repetir sesiones dos veces por semana.";
-        }
-        return "Sin indicaciones.";
     }
 
     public int getId() {
@@ -76,12 +49,8 @@ public class Tratamiento {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (!(o instanceof Tratamiento)) {
-            return false;
-        }
+        if (this == o) return true;
+        if (!(o instanceof Tratamiento)) return false;
         Tratamiento that = (Tratamiento) o;
         return id == that.id;
     }
