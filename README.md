@@ -24,3 +24,14 @@
    Basta con crear un archivo nuevo OdontologiaTratamiento.java que implemente ITratamiento con su propio costo e indicaciones. No se tiene que tocar ni editar ninguna de las clases existentes.
  3 *¿Cuándo una interfaz ayuda a extender el sistema?*
    Cuando define un contrato común (calcularCostoFinal() y obtenerIndicaciones()). Permite que los servicios deleguen el comportamiento en el objeto sin preocuparse de cuál es su clase concreta, cumpliendo el principio Open/Closed (abierto a extensión, cerrado a modificación)
+
+  ### Preguntas de discusion Integrante 3
+  - *¿Por qué lanzar UnsupportedOperationException puede ser señal de mal diseño?*
+ Porque el programador decide donde ubicar esta excepción, y si la ubica reconoce que ese método no debería estar en esa clase, pero lo esta por la interfaz, esto daña Liskov porque las clases hijas (gato,pez…)no pueden comportarse como la clase padre (Animal) ya que esta implementaba IAnimal que tenia los métodos volar(),nadar(),caminar()
+
+  - *¿Qué contrato estaba prometiendo Animal?*
+    Estaba prometiendo que todos los animales podrían volar, nadar y caminar pero no todos los animales pueden cumplir eso.
+
+  - *¿Cómo cambia el diseño cuando modelamos capacidades en lugar de herencia amplia?*
+    La herencia amplia es un problema por su generalización ( interfaz grande), no siempre se puede cumplir ese "contrato" que promete, al model
+ar las capacidades se puede crear clases implementando lo que les corresponda, por ejemplo en base a lo que hacen todos los animales, pueden comer y hacer sonidos, ahora las interfaces son mas especificas (pequeñas) por lo que cada clase puede cumplir su contrato
